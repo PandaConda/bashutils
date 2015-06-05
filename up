@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# This command will traverse up the dir tree until it hits arg[1] or /
+# If it finds arg[1] it will cd to it
+#
+# ex: ~/bacon/spaghetti/potato/ $ up bacon
+#     ~/bacon/ $ 
+#
+# It's also possible to cd into other subdirs from the new dir
+#
+# ex: ~/bacon/spaghetti/potato/ $ up bacon/eggs
+#     ~/bacon/eggs $ 
+#
+# need to not run in local subshell (. up) for cd to persist after exit
+
+# TODO fix tab autocompletion
+# TODO add --dry-run (-n) flag to just output path
+# TODO add --verbose (-v) flag to also output path
+
+up() {
+    # if 0 args goto / -- optimization
+    if [ "$#" -eq 0 ]; then
+        cd /
+        #pwd
+        return 0
+    # if >1 arg print usage
+    elif [ "$#" -ne 1 ]; then
+        echo "usage: $FUNCNAME [DIRECTORY]"
+        return 1
+    fi
+
+    CUR=$PWD
+    DST=$1
+
+    # look for the dirname in the current fpath
+    while [[ "${CUR##*/}" != "${DST%%/*}" && "$CUR" != "/" ]]; do
+        CUR="$(dirname "$CUR")"
+    done
+
+    # cd to the dir if it was found
+    if [[ "${CUR##*/}" == "${DST%%/*}" && -d ${CUR%/*}/$DST ]]; then
+        cd ${CUR%/*}/${DST#/}
+        #pwd
+        return 0
+    fi
+    
+    # dir not found
+    #echo "$0: $FUNCNAME: $1: directory not in filepath
+    return 2
+}
