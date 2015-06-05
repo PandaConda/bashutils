@@ -9,7 +9,7 @@
 # It's also possible to cd into other subdirs from the new dir
 #
 # ex: ~/bacon/spaghetti/potato/ $ up bacon/eggs
-#     ~/bacon/eggs $ 
+#     ~/bacon/eggs/ $ 
 #
 # need to not run in local subshell (. up) for cd to persist after exit
 
