@@ -3,7 +3,7 @@
 # This command will traverse up the dir tree until it hits arg[1] or /
 # If it finds arg[1] it will cd to it
 #
-# if arg[1] appears multiple times in $PATH it will cd to the deepest one
+# if arg[1] appears multiple times in $PWD it will cd to the deepest one
 #
 # ex: ~/bacon/spaghetti/potato/ $ up bacon
 #     ~/bacon/ $ 
