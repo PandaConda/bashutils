@@ -25,7 +25,7 @@ up() {
         cd /
         #pwd
         return 0
-    # if >1 arg print usage
+    # if >1 args print usage
     elif [ "$#" -ne 1 ]; then
         echo "usage: $FUNCNAME [DIRECTORY]"
         return 1
