@@ -3,10 +3,13 @@
 # This command will traverse up the dir tree until it hits arg[1] or /
 # If it finds arg[1] it will cd to it
 #
-# if arg[1] appears multiple times in $PWD it will cd to the deepest one
-#
 # ex: ~/bacon/spaghetti/potato/ $ up bacon
 #     ~/bacon/ $ 
+#
+# if arg[1] appears multiple times in $PWD it will cd to the deepest one
+#
+# ex: ~/bacon/bacon/potato $ up bacon
+#     ~/bacon/bacon/ $
 #
 # It's also possible to cd into other subdirs from the new dir
 #
